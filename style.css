@@ -1,0 +1,1033 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   HTML / BODY
+========================================= */
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #4a1025 0%,
+            #210914 45%,
+            #100308 100%
+        );
+
+    color: #ffffff;
+
+    /*
+       IMPORTANTE:
+       Não usamos overflow: hidden aqui.
+       Isso permite que a página role normalmente
+       quando o conteúdo for maior que a tela.
+    */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* =========================================
+   FUNDO ANIMADO
+========================================= */
+
+.background {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================
+   CORAÇÕES DO FUNDO
+========================================= */
+
+.background span {
+    position: absolute;
+
+    bottom: -60px;
+
+    color: rgba(255, 80, 130, 0.12);
+
+    font-size: 40px;
+
+    animation: subir 12s linear infinite;
+
+    user-select: none;
+}
+
+
+/* =========================================
+   POSIÇÕES DOS CORAÇÕES
+========================================= */
+
+.background span:nth-child(1) {
+    left: 5%;
+    animation-delay: 0s;
+    font-size: 30px;
+}
+
+.background span:nth-child(2) {
+    left: 17%;
+    animation-delay: 3s;
+    font-size: 55px;
+}
+
+.background span:nth-child(3) {
+    left: 30%;
+    animation-delay: 6s;
+    font-size: 25px;
+}
+
+.background span:nth-child(4) {
+    left: 45%;
+    animation-delay: 1s;
+    font-size: 70px;
+}
+
+.background span:nth-child(5) {
+    left: 60%;
+    animation-delay: 5s;
+    font-size: 35px;
+}
+
+.background span:nth-child(6) {
+    left: 72%;
+    animation-delay: 8s;
+    font-size: 60px;
+}
+
+.background span:nth-child(7) {
+    left: 85%;
+    animation-delay: 2s;
+    font-size: 30px;
+}
+
+.background span:nth-child(8) {
+    left: 95%;
+    animation-delay: 7s;
+    font-size: 50px;
+}
+
+
+/* =========================================
+   ANIMAÇÃO DOS CORAÇÕES
+========================================= */
+
+@keyframes subir {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-50vh) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   CONTAINER PRINCIPAL
+========================================= */
+
+.game-container {
+
+    position: relative;
+
+    z-index: 1;
+
+    /*
+       min-height em vez de height:
+       permite que o conteúdo cresça.
+    */
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+
+/* =========================================
+   CARD PRINCIPAL
+========================================= */
+
+.game-card {
+
+    width: 100%;
+
+    max-width: 650px;
+
+    padding: 55px 45px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    animation: aparecer 1.2s ease;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   CORAÇÃO PRINCIPAL
+========================================= */
+
+.heart {
+
+    font-size: 65px;
+
+    margin-bottom: 25px;
+
+    animation: pulsar 1.8s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 15px rgba(255, 50, 100, 0.7)
+        );
+}
+
+
+/* =========================================
+   ANIMAÇÃO DO CORAÇÃO
+========================================= */
+
+@keyframes pulsar {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================
+   PEQUENO TÍTULO
+========================================= */
+
+.small-title {
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #ff9ab5;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   TÍTULO PRINCIPAL
+========================================= */
+
+h1 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(38px, 6vw, 62px);
+
+    line-height: 1.05;
+
+    font-weight: normal;
+
+    margin-bottom: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ffd6e2,
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+/* =========================================
+   DESCRIÇÃO
+========================================= */
+
+.description {
+
+    max-width: 480px;
+
+    margin: 0 auto 35px;
+
+    color: #e5cbd3;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   BOTÃO
+========================================= */
+
+.start-button {
+
+    border: none;
+
+    cursor: pointer;
+
+    padding: 17px 28px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f81,
+            #d91f58
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 10px 30px rgba(255, 50, 100, 0.35);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    font-family: inherit;
+}
+
+
+/* =========================================
+   SETA DO BOTÃO
+========================================= */
+
+.start-button span {
+
+    display: inline-block;
+
+    margin-left: 12px;
+
+    font-size: 20px;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+/* =========================================
+   HOVER DO BOTÃO
+========================================= */
+
+.start-button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 40px rgba(255, 50, 100, 0.5);
+}
+
+
+.start-button:hover span {
+
+    transform: translateX(6px);
+}
+
+
+/* =========================================
+   CLIQUE
+========================================= */
+
+.start-button:active {
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   FOCO DO TECLADO
+========================================= */
+
+.start-button:focus-visible {
+
+    outline: 3px solid rgba(255, 154, 181, 0.7);
+
+    outline-offset: 5px;
+}
+
+
+/* =========================================
+   TEXTO INFERIOR
+========================================= */
+
+.hint {
+
+    margin-top: 25px;
+
+    font-size: 13px;
+
+    color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================
+   ANIMAÇÃO DO CARD
+========================================= */
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.96);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   FOTOS DAS MEMÓRIAS
+========================================= */
+
+.photo-container {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    margin: 0 auto 28px;
+
+    padding: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.4);
+
+    transform: rotate(-1deg);
+
+    animation:
+        fotoEntrando 0.9s ease;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   IMAGEM DAS MEMÓRIAS
+========================================= */
+
+.memory-photo {
+
+    display: block;
+
+    width: 100%;
+
+    max-height: 520px;
+
+    object-fit: contain;
+
+    border-radius: 17px;
+
+    background: #100308;
+}
+
+
+/* =========================================
+   ANIMAÇÃO DA FOTO
+========================================= */
+
+@keyframes fotoEntrando {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            rotate(-5deg)
+            scale(0.92);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            rotate(-1deg)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   HOVER DA FOTO
+========================================= */
+
+.photo-container:hover {
+
+    transform:
+        rotate(0deg)
+        scale(1.02);
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+/* =========================================
+   DESTAQUE DO PEDIDO
+========================================= */
+
+.destaque {
+
+    font-size: 34px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 20px rgba(255, 80, 130, 0.5);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+    .game-container {
+
+        padding:
+            30px 16px;
+    }
+
+    .game-card {
+
+        padding:
+            45px 30px;
+    }
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    .game-container {
+
+        /*
+           Não forçamos o card a caber
+           dentro de uma altura fixa.
+        */
+        min-height: 100vh;
+
+        padding:
+            25px 15px;
+    }
+
+
+    .game-card {
+
+        padding:
+            40px 25px;
+
+        border-radius: 24px;
+    }
+
+
+    .heart {
+
+        font-size: 55px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .small-title {
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+    }
+
+
+    h1 {
+
+        font-size: 40px;
+
+        line-height: 1.08;
+    }
+
+
+    .description {
+
+        font-size: 15px;
+
+        line-height: 1.6;
+
+        margin-bottom: 30px;
+    }
+
+
+    .start-button {
+
+        width: 100%;
+
+        padding:
+            16px 20px;
+    }
+
+
+    .photo-container {
+
+        max-width: 330px;
+    }
+
+
+    .memory-photo {
+
+        max-height: 430px;
+    }
+
+
+    .destaque {
+
+        font-size: 28px;
+    }
+}
+
+
+/* =========================================
+   CELULARES MUITO PEQUENOS
+========================================= */
+
+@media (max-width: 380px) {
+
+    .game-container {
+
+        padding:
+            20px 12px;
+    }
+
+
+    .game-card {
+
+        padding:
+            32px 20px;
+    }
+
+
+    h1 {
+
+        font-size: 34px;
+    }
+
+
+    .description {
+
+        font-size: 14px;
+    }
+
+
+    .start-button {
+
+        font-size: 12px;
+    }
+}/* =========================================
+   ANIMAÇÃO DE SAÍDA
+========================================= */
+
+@keyframes desaparecer {
+
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-25px) scale(0.96);
+    }
+
+}
+
+
+/* =========================================
+   BOTÕES DAS FASES
+========================================= */
+
+.next-button,
+.choice-button,
+.yes-button {
+
+    border: none;
+
+    cursor: pointer;
+
+    padding: 16px 28px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f81,
+            #d91f58
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 10px 30px rgba(255, 50, 100, 0.35);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    font-family: inherit;
+}
+
+
+/* =========================================
+   SETA DOS BOTÕES
+========================================= */
+
+.next-button span {
+
+    display: inline-block;
+
+    margin-left: 10px;
+
+    font-size: 20px;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.next-button:hover,
+.choice-button:hover,
+.yes-button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 40px rgba(255, 50, 100, 0.5);
+
+}
+
+
+.next-button:hover span {
+
+    transform: translateX(6px);
+
+}
+
+
+/* =========================================
+   ESCOLHAS
+========================================= */
+
+.choices {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+
+}
+
+
+/* =========================================
+   PERGUNTA
+========================================= */
+
+.question {
+
+    max-width: 500px;
+
+    margin: 25px auto 0;
+
+    color: #f2dce2;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================
+   PEDIDO FINAL
+========================================= */
+
+.grande {
+
+    font-size: 90px;
+
+}
+
+
+.final-question {
+
+    color: #ead5dc;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+
+}
+
+
+.final-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+
+}
+
+
+/* =========================================
+   MENSAGEM FINAL
+========================================= */
+
+.love-message {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 28px;
+
+    color: #ffd6e2;
+
+    margin-top: 20px;
+
+}
+
+
+.hearts-final {
+
+    font-size: 30px;
+
+    margin-top: 30px;
+
+    letter-spacing: 8px;
+
+}
+
+
+/* =========================================
+   CORAÇÕES FINAIS
+========================================= */
+
+.coracao-final {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    animation:
+        coracaoFinal 4s ease forwards;
+
+}
+
+
+@keyframes coracaoFinal {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.5)
+            rotate(0deg);
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-100vh)
+            scale(1.3)
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVO - BOTÕES
+========================================= */
+
+@media (max-width: 600px) {
+
+    .choices,
+    .final-buttons {
+
+        flex-direction: column;
+
+        width: 100%;
+
+    }
+
+
+    .choice-button,
+    .yes-button,
+    .next-button {
+
+        width: 100%;
+
+    }
+
+
+    .grande {
+
+        font-size: 70px;
+
+    }
+
+
+    .final-question {
+
+        font-size: 16px;
+
+    }
+
+
+    .love-message {
+
+        font-size: 23px;
+
+    }
+
+}
